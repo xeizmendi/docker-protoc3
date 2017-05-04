@@ -1,11 +1,11 @@
-FROM debian:jessie
+FROM golang:1.8
 
 RUN apt-get update\
-	&& apt-get install -y curl ca-certificates unzip\
+	&& apt-get install -y --no-install-recommends unzip\
 	&& curl -s -L https://github.com/google/protobuf/releases/download/v3.3.0/protoc-3.3.0-linux-x86_64.zip -o /tmp/protoc.zip\
-	&& unzip /tmp/protoc.zip -d /proto\
+	&& unzip /tmp/protoc.zip -d /usr/local\
 	&& rm -f /tmp/protoc.zip\
-	&& apt-get remove --purge -y curl ca-certificates unzip\
-	&& rm -fr /var/lib/apt/lists/*
+	&& rm -fr /var/lib/apt/lists/*\
+	&& go get -u github.com/golang/protobuf/proto github.com/golang/protobuf/protoc-gen-go
 
-ENTRYPOINT ["/proto/bin/protoc"]
+ENTRYPOINT ["/usr/local/bin/protoc"]
