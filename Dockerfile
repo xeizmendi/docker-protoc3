@@ -54,7 +54,9 @@ RUN curl -L -s https://github.com/google/protobuf/releases/download/v${PROTOBUF_
 	&& ldconfig \
 	&& rm -rf /tmp/protobuf-${PROTOBUF_VERSION}
 
-RUN go get -u github.com/golang/protobuf/proto github.com/golang/protobuf/protoc-gen-go
+RUN go get -u github.com/golang/protobuf/proto github.com/golang/protobuf/protoc-gen-go github.com/gogo/protobuf/protoc-gen-gofast
+
+RUN go get -u github.com/gogo/protobuf/gogoproto github.com/gogo/protobuf/protoc-gen-gogofast github.com/gogo/protobuf/protoc-gen-gogofaster github.com/gogo/protobuf/protoc-gen-gogoslick
 
 ENV GRPC_VERSION=1.3.0
 
