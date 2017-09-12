@@ -58,7 +58,7 @@ RUN go get -u github.com/golang/protobuf/proto github.com/golang/protobuf/protoc
 
 RUN go get -u github.com/gogo/protobuf/gogoproto github.com/gogo/protobuf/protoc-gen-gogofast github.com/gogo/protobuf/protoc-gen-gogofaster github.com/gogo/protobuf/protoc-gen-gogoslick
 
-ENV GRPC_VERSION=1.4.0
+ENV GRPC_VERSION=1.6.0
 
 RUN pip3 install grpcio==${GRPC_VERSION} \
 	&& pip3 install grpcio-tools==${GRPC_VERSION} \
